@@ -27,15 +27,22 @@
     img:hover {
       transform: scale(1.1);
     }
-    /* Credit fixed at bottom-left in red */
-    .credit {
+    /* Container for credit + TikTok ID */
+    .credit-container {
       position: fixed;
-      bottom: 10px;       /* 10px from bottom */
-      left: 10px;         /* 10px from left */
-      color: red;         /* bright red */
+      bottom: 10px;
+      left: 10px;
+      display: flex;
+      flex-direction: column; /* stack vertically */
+      align-items: flex-start;
+      color: red;
       font-size: 18px;
       font-weight: bold;
-      z-index: 9999;      /* above everything */
+      z-index: 9999;
+    }
+    .credit-container span {
+      margin: 0;
+      line-height: 1.2;
     }
   </style>
 </head>
@@ -53,8 +60,11 @@
     <source src="yemale.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Credit at bottom-left -->
-  <div class="credit">Made by Sandeep Karki</div>
+  <!-- Credit + TikTok ID -->
+  <div class="credit-container">
+    <span>Made by Sandeep Karki</span>
+    <span>@sandeepkarkichhetri77777</span>
+  </div>
 
 </body>
 </html>
