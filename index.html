@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Interactive CPN UML Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       text-align: center;
@@ -11,7 +12,7 @@
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      overflow: hidden; /* prevent confetti overflow */
+      overflow: hidden; /* prevent emoji overflow */
     }
     h1 {
       font-size: 2em;
@@ -80,19 +81,16 @@
       50% { transform: translateY(-8px); }
     }
 
-    /* Confetti pieces */
-    .confetti {
+    /* Poop emoji pieces */
+    .poop {
       position: absolute;
-      width: 10px;
-      height: 10px;
-      background-color: #ff0;
-      opacity: 0.8;
+      font-size: 24px;
       pointer-events: none;
       z-index: 9998;
-      animation: confettiFall 3s linear forwards;
+      animation: poopFall 3s linear forwards;
     }
-    @keyframes confettiFall {
-      0% { transform: translateY(0) rotate(0deg); }
+    @keyframes poopFall {
+      0% { transform: translateY(0px) rotate(0deg); opacity: 1; }
       100% { transform: translateY(600px) rotate(360deg); opacity: 0; }
     }
   </style>
@@ -120,22 +118,22 @@
     const sound = document.getElementById('sound');
 
     logo.addEventListener('click', () => {
+      // Play meme audio
       sound.play();
 
-      // Create 20 confetti pieces
+      // Create 20 poop emojis
       for (let i = 0; i < 20; i++) {
-        const confetti = document.createElement('div');
-        confetti.classList.add('confetti');
-        confetti.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 50%)`;
-        confetti.style.left = `${logo.offsetLeft + Math.random() * logo.width}px`;
-        confetti.style.top = `${logo.offsetTop}px`;
-        confetti.style.width = `${5 + Math.random()*10}px`;
-        confetti.style.height = `${5 + Math.random()*10}px`;
-        confetti.style.animationDuration = `${2 + Math.random()*2}s`;
-        document.body.appendChild(confetti);
+        const poop = document.createElement('div');
+        poop.classList.add('poop');
+        poop.textContent = '💩';
+        poop.style.left = `${logo.offsetLeft + Math.random() * logo.width}px`;
+        poop.style.top = `${logo.offsetTop}px`;
+        poop.style.fontSize = `${20 + Math.random()*30}px`;
+        poop.style.animationDuration = `${2 + Math.random()*2}s`;
+        document.body.appendChild(poop);
 
-        // Remove confetti after animation
-        setTimeout(() => confetti.remove(), 3000);
+        // Remove poop after animation
+        setTimeout(() => poop.remove(), 3000);
       }
     });
   </script>
