@@ -2,17 +2,39 @@
 <html>
 <head>
   <title>Interactive CPN UML Website</title>
+  <style>
+    body {
+      text-align: center;
+      background-color: black;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+    h1 {
+      margin-top: 50px;
+    }
+    img {
+      cursor: pointer;
+      width: 300px;
+      margin-top: 30px;
+      border: 3px solid white;
+      border-radius: 10px;
+      transition: transform 0.2s;
+    }
+    img:hover {
+      transform: scale(1.1);
+    }
+  </style>
 </head>
-<body style="text-align:center; background:black;">
+<body>
 
-  <h1 style="color:white;">Tap the Logo 🔊</h1>
+  <h1>Tap the Logo 🔊</h1>
 
   <!-- CPN UML logo -->
   <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3d/CPN-UML_logo.png/240px-CPN-UML_logo.png"
-       style="cursor:pointer; width:300px;"
+       alt="CPN UML Logo"
        onclick="document.getElementById('sound').play();">
 
-  <!-- Sound -->
+  <!-- Meme Audio -->
   <audio id="sound">
     <source src="yemale.mp3" type="audio/mpeg">
   </audio>
