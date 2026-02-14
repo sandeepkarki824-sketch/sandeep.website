@@ -27,27 +27,49 @@
     img:hover {
       transform: scale(1.1);
     }
-    /* Container for credit + TikTok ID */
+    /* Credit container */
     .credit-container {
       position: fixed;
       bottom: 10px;
       left: 10px;
       display: flex;
-      flex-direction: column; /* stack vertically */
+      flex-direction: column;
       align-items: flex-start;
       font-size: 18px;
       font-weight: bold;
       z-index: 9999;
     }
-    .credit-container .author {
-      color: red; /* your credit in red */
+    /* Red glowing credit */
+    .author {
+      color: red;
+      text-shadow:
+        0 0 5px red,
+        0 0 10px red,
+        0 0 20px red,
+        0 0 40px red;
+      animation: glow 1.5s infinite alternate;
       margin: 0;
       line-height: 1.2;
     }
-    .credit-container .tiktok {
-      color: #00ff00; /* TikTok ID in green */
+    /* Green TikTok ID moving/pulsing */
+    .tiktok {
+      color: #00ff00;
       margin: 0;
       line-height: 1.2;
+      animation: pulse 1s infinite alternate;
+    }
+
+    /* Glow animation for red credit */
+    @keyframes glow {
+      from { text-shadow: 0 0 5px red, 0 0 10px red, 0 0 20px red, 0 0 40px red; }
+      to { text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red, 0 0 50px red; }
+    }
+
+    /* Pulse/move animation for TikTok ID */
+    @keyframes pulse {
+      0% { transform: translateX(0px); }
+      50% { transform: translateX(5px); }
+      100% { transform: translateX(0px); }
     }
   </style>
 </head>
