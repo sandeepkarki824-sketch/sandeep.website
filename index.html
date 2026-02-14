@@ -4,9 +4,12 @@
   <title>Interactive CPN UML Website</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    /* Body with animated dark gradient */
     body {
       text-align: center;
-      background-color: black;
+      background: linear-gradient(-45deg, #000000, #1a1a1a, #333333, #0d0d0d);
+      background-size: 400% 400%;
+      animation: darkGradient 15s ease infinite;
       font-family: Arial, sans-serif;
       color: white;
       margin: 0;
@@ -14,10 +17,18 @@
       min-height: 100vh;
       overflow: hidden; 
     }
+
+    @keyframes darkGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     h1 {
       font-size: 2em;
       margin-top: 50px;
     }
+
     img {
       cursor: pointer;
       width: 300px;
@@ -27,6 +38,7 @@
       transition: transform 0.2s;
       animation: logoBounce 2s infinite ease-in-out;
     }
+
     img:hover {
       transform: scale(1.2);
     }
@@ -44,6 +56,7 @@
       z-index: 9999;
       animation: bounce 2s infinite ease-in-out;
     }
+
     .author {
       color: red;
       text-shadow:
@@ -55,6 +68,7 @@
       margin: 0;
       line-height: 1.2;
     }
+
     .tiktok {
       color: #00ff00;
       margin: 0;
@@ -67,15 +81,18 @@
       from { text-shadow: 0 0 5px red,0 0 10px red,0 0 20px red,0 0 40px red;}
       to { text-shadow: 0 0 10px red,0 0 20px red,0 0 30px red,0 0 50px red;}
     }
+
     @keyframes pulse {
       0% { transform: translateX(0px); }
       50% { transform: translateX(5px); }
       100% { transform: translateX(0px); }
     }
+
     @keyframes bounce {
       0%,100%{transform:translateY(0px);}
       50%{transform:translateY(-5px);}
     }
+
     @keyframes logoBounce {
       0%,100%{transform:translateY(0px);}
       50%{transform:translateY(-8px);}
