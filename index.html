@@ -35,12 +35,17 @@
       display: flex;
       flex-direction: column; /* stack vertically */
       align-items: flex-start;
-      color: red;
       font-size: 18px;
       font-weight: bold;
       z-index: 9999;
     }
-    .credit-container span {
+    .credit-container .author {
+      color: red; /* your credit in red */
+      margin: 0;
+      line-height: 1.2;
+    }
+    .credit-container .tiktok {
+      color: #00ff00; /* TikTok ID in green */
       margin: 0;
       line-height: 1.2;
     }
@@ -62,8 +67,8 @@
 
   <!-- Credit + TikTok ID -->
   <div class="credit-container">
-    <span>Made by Sandeep Karki</span>
-    <span>@sandeepkarkichhetri77777</span>
+    <span class="author">Made by Sandeep Karki</span>
+    <span class="tiktok">TikTok: @sandeepkarkichhetri77777</span>
   </div>
 
 </body>
