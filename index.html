@@ -38,6 +38,7 @@
       font-size: 18px;
       font-weight: bold;
       z-index: 9999;
+      animation: bounce 2s infinite ease-in-out;
     }
     /* Red glowing credit */
     .author {
@@ -70,6 +71,12 @@
       0% { transform: translateX(0px); }
       50% { transform: translateX(5px); }
       100% { transform: translateX(0px); }
+    }
+
+    /* Bounce animation for entire credit container */
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); } /* moves up 5px */
     }
   </style>
 </head>
