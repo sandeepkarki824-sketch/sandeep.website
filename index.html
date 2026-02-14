@@ -12,7 +12,7 @@
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      overflow: hidden; /* prevent emoji overflow */
+      overflow: hidden; 
     }
     h1 {
       font-size: 2em;
@@ -64,8 +64,8 @@
 
     /* Animations */
     @keyframes glow {
-      from { text-shadow: 0 0 5px red, 0 0 10px red, 0 0 20px red, 0 0 40px red; }
-      to { text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red, 0 0 50px red; }
+      from { text-shadow: 0 0 5px red,0 0 10px red,0 0 20px red,0 0 40px red;}
+      to { text-shadow: 0 0 10px red,0 0 20px red,0 0 30px red,0 0 50px red;}
     }
     @keyframes pulse {
       0% { transform: translateX(0px); }
@@ -73,25 +73,21 @@
       100% { transform: translateX(0px); }
     }
     @keyframes bounce {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-5px); }
+      0%,100%{transform:translateY(0px);}
+      50%{transform:translateY(-5px);}
     }
     @keyframes logoBounce {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
+      0%,100%{transform:translateY(0px);}
+      50%{transform:translateY(-8px);}
     }
 
-    /* Poop emoji pieces */
+    /* Poop emoji style */
     .poop {
       position: absolute;
-      font-size: 24px;
       pointer-events: none;
       z-index: 9998;
-      animation: poopFall 3s linear forwards;
-    }
-    @keyframes poopFall {
-      0% { transform: translateY(0px) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(600px) rotate(360deg); opacity: 0; }
+      opacity: 0.9;
+      font-size: 24px;
     }
   </style>
 </head>
@@ -118,10 +114,8 @@
     const sound = document.getElementById('sound');
 
     logo.addEventListener('click', () => {
-      // Play meme audio
       sound.play();
 
-      // Create 20 poop emojis
       for (let i = 0; i < 20; i++) {
         const poop = document.createElement('div');
         poop.classList.add('poop');
@@ -129,11 +123,34 @@
         poop.style.left = `${logo.offsetLeft + Math.random() * logo.width}px`;
         poop.style.top = `${logo.offsetTop}px`;
         poop.style.fontSize = `${20 + Math.random()*30}px`;
-        poop.style.animationDuration = `${2 + Math.random()*2}s`;
         document.body.appendChild(poop);
 
-        // Remove poop after animation
-        setTimeout(() => poop.remove(), 3000);
+        // Random bouncing animation
+        const startX = poop.offsetLeft;
+        const startY = poop.offsetTop;
+        const amplitudeX = Math.random() * 50 + 20; // side movement
+        const duration = 2000 + Math.random()*1000; // animation duration
+
+        let startTime = null;
+
+        function animate(timestamp) {
+          if (!startTime) startTime = timestamp;
+          let progress = timestamp - startTime;
+          let fraction = progress / duration;
+          if (fraction > 1) fraction = 1;
+
+          poop.style.top = startY + fraction*600 + 'px';
+          poop.style.left = startX + Math.sin(fraction*6.28) * amplitudeX + 'px';
+          poop.style.transform = `rotate(${fraction*360}deg)`;
+
+          if (fraction < 1) {
+            requestAnimationFrame(animate);
+          } else {
+            poop.remove();
+          }
+        }
+
+        requestAnimationFrame(animate);
       }
     });
   </script>
