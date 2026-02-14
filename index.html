@@ -8,17 +8,21 @@
       background-color: black;
       font-family: Arial, sans-serif;
       color: white;
-      position: relative;
+      margin: 0;
+      padding: 0;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
     h1 {
-      margin-top: 50px;
       font-size: 2em;
+      margin-bottom: 40px;
     }
     img {
       cursor: pointer;
       width: 300px;
-      margin-top: 30px;
       border: 3px solid white;
       border-radius: 10px;
       transition: transform 0.2s;
@@ -26,12 +30,12 @@
     img:hover {
       transform: scale(1.1);
     }
-    /* Credit text at the bottom */
+    /* Credit fixed at bottom in red */
     .credit {
-      position: absolute;
-      bottom: 20px;
+      position: fixed;
+      bottom: 10px;
       width: 100%;
-      color: #00ff00; /* Bright neon green */
+      color: red; /* bright red */
       font-size: 18px;
       font-weight: bold;
       text-align: center;
