@@ -23,10 +23,12 @@
       border: 3px solid white;
       border-radius: 10px;
       transition: transform 0.2s;
+      animation: logoBounce 2s infinite ease-in-out;
     }
     img:hover {
-      transform: scale(1.1);
+      transform: scale(1.2); /* bigger on hover */
     }
+
     /* Credit container */
     .credit-container {
       position: fixed;
@@ -40,7 +42,6 @@
       z-index: 9999;
       animation: bounce 2s infinite ease-in-out;
     }
-    /* Red glowing credit */
     .author {
       color: red;
       text-shadow:
@@ -52,7 +53,6 @@
       margin: 0;
       line-height: 1.2;
     }
-    /* Green TikTok ID moving/pulsing */
     .tiktok {
       color: #00ff00;
       margin: 0;
@@ -60,23 +60,23 @@
       animation: pulse 1s infinite alternate;
     }
 
-    /* Glow animation for red credit */
+    /* Animations */
     @keyframes glow {
       from { text-shadow: 0 0 5px red, 0 0 10px red, 0 0 20px red, 0 0 40px red; }
       to { text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red, 0 0 50px red; }
     }
-
-    /* Pulse/move animation for TikTok ID */
     @keyframes pulse {
       0% { transform: translateX(0px); }
       50% { transform: translateX(5px); }
       100% { transform: translateX(0px); }
     }
-
-    /* Bounce animation for entire credit container */
     @keyframes bounce {
       0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-5px); } /* moves up 5px */
+      50% { transform: translateY(-5px); }
+    }
+    @keyframes logoBounce {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
     }
   </style>
 </head>
