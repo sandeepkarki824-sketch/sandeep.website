@@ -11,6 +11,7 @@
       margin: 0;
       padding: 0;
       min-height: 100vh;
+      overflow: hidden; /* prevent confetti overflow */
     }
     h1 {
       font-size: 2em;
@@ -26,7 +27,7 @@
       animation: logoBounce 2s infinite ease-in-out;
     }
     img:hover {
-      transform: scale(1.2); /* bigger on hover */
+      transform: scale(1.2);
     }
 
     /* Credit container */
@@ -78,6 +79,22 @@
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-8px); }
     }
+
+    /* Confetti pieces */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #ff0;
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: 9998;
+      animation: confettiFall 3s linear forwards;
+    }
+    @keyframes confettiFall {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(600px) rotate(360deg); opacity: 0; }
+    }
   </style>
 </head>
 <body>
@@ -85,9 +102,7 @@
   <h1>Tap the Logo 🔊</h1>
 
   <!-- Clickable CPN UML Logo -->
-  <img src="cpn_uml.png"
-       alt="CPN UML Logo"
-       onclick="document.getElementById('sound').play();">
+  <img src="cpn_uml.png" alt="CPN UML Logo" id="logo">
 
   <!-- Meme Audio -->
   <audio id="sound">
@@ -99,6 +114,31 @@
     <span class="author">Made by Sandeep Karki</span>
     <span class="tiktok">TikTok: @sandeepkarkichhetri77777</span>
   </div>
+
+  <script>
+    const logo = document.getElementById('logo');
+    const sound = document.getElementById('sound');
+
+    logo.addEventListener('click', () => {
+      sound.play();
+
+      // Create 20 confetti pieces
+      for (let i = 0; i < 20; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 50%)`;
+        confetti.style.left = `${logo.offsetLeft + Math.random() * logo.width}px`;
+        confetti.style.top = `${logo.offsetTop}px`;
+        confetti.style.width = `${5 + Math.random()*10}px`;
+        confetti.style.height = `${5 + Math.random()*10}px`;
+        confetti.style.animationDuration = `${2 + Math.random()*2}s`;
+        document.body.appendChild(confetti);
+
+        // Remove confetti after animation
+        setTimeout(() => confetti.remove(), 3000);
+      }
+    });
+  </script>
 
 </body>
 </html>
