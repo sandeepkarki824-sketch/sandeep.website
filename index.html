@@ -11,18 +11,15 @@
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
     }
     h1 {
       font-size: 2em;
-      margin-bottom: 40px;
+      margin-top: 50px;
     }
     img {
       cursor: pointer;
       width: 300px;
+      margin-top: 30px;
       border: 3px solid white;
       border-radius: 10px;
       transition: transform 0.2s;
@@ -30,15 +27,15 @@
     img:hover {
       transform: scale(1.1);
     }
-    /* Credit fixed at bottom in red */
+    /* Credit fixed at bottom-left in red */
     .credit {
       position: fixed;
-      bottom: 10px;
-      width: 100%;
-      color: red; /* bright red */
+      bottom: 10px;       /* 10px from bottom */
+      left: 10px;         /* 10px from left */
+      color: red;         /* bright red */
       font-size: 18px;
       font-weight: bold;
-      text-align: center;
+      z-index: 9999;      /* above everything */
     }
   </style>
 </head>
@@ -56,7 +53,7 @@
     <source src="yemale.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Your Credit -->
+  <!-- Credit at bottom-left -->
   <div class="credit">Made by Sandeep Karki</div>
 
 </body>
